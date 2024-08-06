@@ -1,15 +1,23 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
 
 const Layout = () => {
+  const global = useSelector((store) => store.global);
   return (
-    <div>
-      <Header/>
-      <Sidebar />
-      <Outlet />
+    <div className="bg-black text-white h-screen">
+      <Header />
+      <div className="flex">
+        <div className={`h-full ${global.showSidebar ? "w-[12%]" : null}`}>
+          <Sidebar />
+        </div>
+        <div className={global.showSidebar ? "w-[88%]" : "w-full"}>
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Layout
+export default Layout;
