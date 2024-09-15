@@ -23,7 +23,7 @@ const VideoContainer = () => {
           {
             allVideoData.map((element,index)=>{
               return (
-                  <Link to={`watch?v=${element.id}`}> <VideoCard info={element} key={index} /></Link>
+                  <Link to={`watch?v=${element.id}`}  key={index} > <VideoCard info={element} /></Link>
               )
             }
           )
