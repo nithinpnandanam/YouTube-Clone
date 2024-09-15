@@ -1,12 +1,17 @@
 import {createSlice} from "@reduxjs/toolkit"
 const globalSlice = createSlice({
     name:'global',
-    initialState:null,
+    initialState:{
+        showSidebar:true,
+    },
     reducers:{
-        addUser:(state,action)=>{
-            return action.payload
+        $toggleSidebar:(state,action)=>{
+            state.showSidebar=!state.showSidebar
         },
+        $closeSidebar:(state)=>{
+            state.showSidebar=false
+        }
     }
 })
-export const {addUser} = globalSlice.actions
+export const {$toggleSidebar,$closeSidebar} = globalSlice.actions
 export default globalSlice.reducer
