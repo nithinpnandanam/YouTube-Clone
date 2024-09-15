@@ -1,18 +1,24 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import hamburger from "../assets/hamburger.png";
 import searchIcon from "../assets/search.png";
 import userIcon from "../assets/user.svg";
 import { $toggleSidebar } from "../utils/slices/globalSlice";
 import { useEffect, useState } from "react";
 import { searchAPI } from "../utils/consatnts";
-
+import { $addToSearchCache } from "../utils/slices/searchSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState("");
   const [showSuggestion, setShowSuggestion] = useState([]);
+  const searchCache = useSelector((store)=>store.searchCache)
   useEffect(() => {
     const searchTimer = setTimeout(() => {
-      fetchSuggestions(searchValue);
+      if(searchCache[searchValue]){
+        setShowSuggestion(searchCache[searchValue])
+      }else{
+        fetchSuggestions(searchValue);
+      }
+      
     }, 200);
     return () => {
       clearTimeout(searchTimer);
@@ -22,6 +28,9 @@ const Header = () => {
     const data = await fetch(searchAPI + searchValue);
     const json = await data.json();
     setShowSuggestion(json[1]);
+    dispatch($addToSearchCache({
+      [searchValue]:json[1]
+    }))
   };
   const categories = [
     "All",
