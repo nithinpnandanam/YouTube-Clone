@@ -12,7 +12,7 @@ const Sidebar = () => {
   ];
   
   return (
-    global.showSidebar &&  (<div className="border-2 border-solid border-green-600 flex flex-col h-full">
+    global.showSidebar &&  (<div className="flex flex-col h-full">
         {sidebarItems.map((element, index) => {
           return (
             <button className="p-5" key={index}>

@@ -15,7 +15,7 @@ const Body = () => {
   ];
   return (
     <div>
-        <div className="border-2 border-solid border-violet-700 p-2  ">
+        <div className="p-2">
         {categories.map((element, index) => {
           return (
             <button

@@ -8,7 +8,10 @@ const globalSlice = createSlice({
         $toggleSidebar:(state,action)=>{
             state.showSidebar=!state.showSidebar
         },
+        $closeSidebar:(state)=>{
+            state.showSidebar=false
+        }
     }
 })
-export const {$toggleSidebar} = globalSlice.actions
+export const {$toggleSidebar,$closeSidebar} = globalSlice.actions
 export default globalSlice.reducer

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const Layout = () => {
   const global = useSelector((store) => store.global);
   return (
-    <div className="bg-black text-white h-screen">
+    <div className="bg-black text-white">
       <Header />
       <div className="flex">
         <div className={`h-full ${global.showSidebar ? "w-[12%]" : null}`}>
