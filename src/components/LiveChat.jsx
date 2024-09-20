@@ -3,7 +3,7 @@ import userIcon from "../assets/user.svg";
 import ChatMessage from "./ChatMessage";
 import { useEffect } from "react";
 import { $addLiveChat } from "../utils/slices/liveChatSlice";
-import { generateRandomName } from "../utils/helper";
+import { generateRandomName,generateRandomMessage,getRandomNumber} from "../utils/helper";
 import { nameList } from "../utils/consatnts";
 const LiveChat = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const LiveChat = () => {
       dispatch(
         $addLiveChat({
           name: generateRandomName(nameList),
-          comment: "msaduhbjkxopsxahjbhbjjsapoxsshbciunsxn",
+          comment: generateRandomMessage(getRandomNumber()),
         })
       );
     }, 1000);
@@ -32,7 +32,7 @@ const LiveChat = () => {
               alt="search icon"
               className="w-8 h-8 border-solid border-2  border-gray-600 rounded-full"
             />
-            <ChatMessage details={element} key={index} number={index}/>
+            <ChatMessage details={element} key={index} />
           </div>
         );
       })}
