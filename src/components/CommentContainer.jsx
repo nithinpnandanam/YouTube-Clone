@@ -3,41 +3,41 @@ const CommentContainer = () => {
   const commentData = [
     {
       name: "Phoebe Buffay",
-      comment: "Random Comment",
+      comment: "Random Comment about a random thing by people from France",
     },
     {
       name: "Chandler Bing",
-      comment: "Random Comment",
+      comment: "Random Comment about a random thing by people from France",
       replies: [
         {
           name: "Chandler Bing",
-          comment: "Random Comment",
+          comment: "Random Comment about a random thing by people from France",
         },
         {
           name: "Chandler Bing",
-          comment: "Random Comment",
+          comment: "Random Comment about a random thing by people from France",
         },
       ],
     },
     {
       name: "Chandler Bing",
-      comment: "Random Comment",
+      comment: "Random Comment about a random thing by people from France",
     },
     {
       name: "Chandler Bing",
-      comment: "Random Comment",
+      comment: "Random Comment about a random thing by people from France",
       replies: [
         {
           name: "Ross Geller",
-          comment: "Random Comment",
+          comment: "Random Comment about a random thing by people from France",
           replies: [
             {
               name: "Ross Geller",
-              comment: "Random Comment",
+              comment: "Random Comment about a random thing by people from France",
             },
             {
               name: "Ross Geller",
-              comment: "Random Comment",
+              comment: "Random Comment about a random thing by people from France",
             },
           ],
         },
@@ -45,27 +45,27 @@ const CommentContainer = () => {
     },
     {
       name: "Chandler Bing",
-      comment: "Random Comment",
+      comment: "Random Comment about a random thing by people from France",
       replies: [
         {
           name: "Chandler Bing",
-          comment: "Random Comment",
+          comment: "Random Comment about a random thing by people from France",
         },
         {
           name: "Chandler Bing",
-          comment: "Random Comment",
+          comment: "Random Comment about a random thing by people from France",
           replies: [
             {
               name: "Chandler Bing",
-              comment: "Random Comment",
+              comment: "Random Comment about a random thing by people from France",
               replies: [
                 {
                   name: "Chandler Bing",
-                  comment: "Random Comment",
+                  comment: "Random Comment about a random thing by people from France",
                   replies: [
                     {
                       name: "Chandler Bing",
-                      comment: "Random Comment",
+                      comment: "Random Comment about a random thing by people from France",
                     },
                   ]
                 },
@@ -75,11 +75,11 @@ const CommentContainer = () => {
         },
         {
           name: "Chandler Bing",
-          comment: "Random Comment",
+          comment: "Random Comment about a random thing by people from France",
         },
         {
           name: "Chandler Bing",
-          comment: "Random Comment",
+          comment: "Random Comment about a random thing by people from France",
         },
       ],
     },
@@ -93,7 +93,7 @@ const CommentContainer = () => {
             <div>
               <Comment info={element} key={index} />
               {element.replies && (
-                <div className="ml-7 border-l-2 ">
+                <div className="ml-7  ">
                   <CommentList allComments={element.replies} />
                 </div>
               )}
@@ -108,7 +108,7 @@ const CommentContainer = () => {
     const { name, comment } = props.info;
     return (
       <div>
-        <div className="flex ">
+        <div className="flex pb-4">
           <img
             src={userIcon}
             alt="search icon"
@@ -124,7 +124,7 @@ const CommentContainer = () => {
   };
   return (
     <div>
-      <p className="font-bold text-3xl">Comments</p>
+      <p className="font-bold text-3xl p-4">Comments</p>
       <CommentList allComments={commentData} />
     </div>
   );
