@@ -1,22 +1,28 @@
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LiveChat from "./LiveChat";
-import { useEffect, useRef } from "react";
-
+import {useRef } from "react";
+import { $addLiveChat } from "../utils/slices/liveChatSlice";
 const WatchVideo = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const showSidebar = useSelector((store)=>store.global.showSidebar)
-  const scrollRef = useRef(null);
-  const liveChatData = useSelector((store) => store.liveChat.liveChatData);
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [liveChatData]);
+  const showSidebar = useSelector((store) => store.global.showSidebar);
+  const serachValue = useRef("");
+  const dispatch = useDispatch()
+  const sendLiveChat = () => {
+    dispatch($addLiveChat({
+      name: "Joey Tribbiani",
+      comment: serachValue?.current?.value
+    }))
+    serachValue.current.value = "";
+  }
   return (
-    <div className="flex">
-      <div className={`flex w-[70%] flex-col  ${showSidebar===false?"pl-[2rem] box-border":""}`}>
+    <div className="flex ">
+      <div
+        className={`flex w-[70%] flex-col  ${
+          showSidebar === false ? "pl-[2rem] box-border" : ""
+        }`}
+      >
         <iframe
           height="600"
           className="w-full rounded-2xl"
@@ -26,16 +32,20 @@ const WatchVideo = () => {
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         ></iframe>
-      <div>
-        <CommentContainer />
+        <div>
+          <CommentContainer />
+        </div>
+      </div>
+      <div className="h-[600px] w-[30%]  flex flex-col justify-between px-4">
+        <p className="py-4 text-center text-xl">Live Chat</p>
+        <LiveChat />
+        <div className="flex ">
+        <input type="text" className="text-black mr-4 w-[77%]" ref={serachValue} />
+        <button className="rounded-lg bg-green-500 px-4 py-2" onClick={sendLiveChat}> Send </button>
+        </div>
+
       </div>
     </div>
-    <div className="h-[600px] w-[30%] border overflow-y-auto flex  flex-col-reverse" >
-      <p className="p-4 text-center text-xl">Live Chat</p>
-      <LiveChat/>
-    </div>
-    </div>
-    
   );
 };
 export default WatchVideo;

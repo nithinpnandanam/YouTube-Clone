@@ -8,10 +8,8 @@ import { nameList } from "../utils/consatnts";
 const LiveChat = () => {
   const dispatch = useDispatch();
   const liveChatData = useSelector((store) => store.liveChat.liveChatData);
-  console.log("To show", liveChatData);
   useEffect(() => {
     const apiPolling = setInterval(() => {
-      console.log("Api Polling");
       dispatch(
         $addLiveChat({
           name: generateRandomName(nameList),
@@ -24,10 +22,11 @@ const LiveChat = () => {
     };
   }, []);
   return (
-    <div className="flex flex-col border-red-500 border">
+    <div className="flex flex-col-reverse h-full overflow-y-auto">
+      <div className="flex flex-col">
       {liveChatData.map((element, index) => {
         return (
-          <div className="flex pb-4 pl-4">
+          <div className="flex pb-4 items-center">
             <img
               src={userIcon}
               alt="search icon"
@@ -37,6 +36,8 @@ const LiveChat = () => {
           </div>
         );
       })}
+      </div>
+      
     </div>
   );
 };

@@ -7,7 +7,7 @@ const liveChatSlice = createSlice({
     reducers:{
         $addLiveChat:(state,action)=>{
             state.liveChatData.push(action.payload)
-            console.log("data from store",state.liveChatData)
+            state.liveChatData.length>25?state.liveChatData.splice(0,5):"";
         },
     }
 })
