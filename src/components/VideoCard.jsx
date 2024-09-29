@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { $closeSidebar } from "../utils/slices/globalSlice";
+import { formatViewCount } from "../utils/helper";
 
 const VideoCard = (props) => {
   const {snippet,statistics} = props.info
@@ -15,8 +16,8 @@ const VideoCard = (props) => {
       </div>
       <p>{snippet.channelTitle}</p>
       <div className="flex">
-        <p>{statistics.viewCount} views</p>
-        <p>{snippet.publishedAt}</p>
+        <p>{formatViewCount(statistics.viewCount)} views</p>
+        {/* <p>{snippet.publishedAt}</p> */}
       </div>
     </div>
   );
