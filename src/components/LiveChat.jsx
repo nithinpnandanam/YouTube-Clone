@@ -26,7 +26,7 @@ const LiveChat = () => {
       <div className="flex flex-col">
       {liveChatData.map((element, index) => {
         return (
-          <div className="flex pb-4 items-center">
+          <div className="flex pb-4 items-center" key={index}> 
             <img
               src={userIcon}
               alt="search icon"

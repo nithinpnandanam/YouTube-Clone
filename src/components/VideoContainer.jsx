@@ -2,8 +2,11 @@ import { useEffect, useState } from "react"
 import { allVideos } from "../utils/consatnts"
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import DummyAllVideo from "./DummyAllVideo";
 const VideoContainer = () => {
   const [allVideoData,setAllVideoData] = useState(null)
+  const global = useSelector((store) => store.global);
     useEffect(() => {
         const fetchAllVideos= async () => {
           try {
@@ -17,9 +20,11 @@ const VideoContainer = () => {
     
         fetchAllVideos();
       }, []);
-    
+    if(allVideoData===null){
+      return <DummyAllVideo/>
+    }
     return allVideoData && (
-        <div className="flex flex-wrap gap-x-12">
+        <div className={`flex flex-wrap ${global.showSidebar?"gap-x-12":"gap-x-4 p-4"}`}>
           {
             allVideoData.map((element,index)=>{
               return (
