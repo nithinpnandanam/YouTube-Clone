@@ -2,7 +2,7 @@
 <p align="center">This is a clone of YouTube App with necessary features</p>
 
 ## Video 
-- [Vide Demo in Youtube](https://developers.google.com/youtube/v3/getting-started)
+- Will be uploading soon
   
 ## Setup
 ```
